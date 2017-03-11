@@ -1,7 +1,6 @@
 package com.juhezi.mvvmdemo.sign_in;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.juhezi.mvvmdemo.R;
@@ -16,12 +15,12 @@ public class SignInActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment getFragment() {
-        return null;
+        return SignInFragment.getInstance();
     }
 
     @Override
     protected int getActivityLayoutRes() {
-        return R.layout.activity_main;
+        return R.layout.activity_sign_in;
     }
 
     @Override

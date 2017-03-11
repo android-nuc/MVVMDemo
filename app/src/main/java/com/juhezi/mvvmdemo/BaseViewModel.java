@@ -21,5 +21,4 @@ public abstract class BaseViewModel<Binding extends ViewDataBinding> {
         //初始化DataSource
     }
 
-
 }
