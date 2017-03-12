@@ -1,6 +1,5 @@
 package com.juhezi.mvvmdemo.sign_in;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -10,15 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.juhezi.mvvmdemo.BaseView;
 import com.juhezi.mvvmdemo.R;
 import com.juhezi.mvvmdemo.databinding.FragmentSignInBinding;
+import com.juhezi.mvvmdemo.model.beans.UserBean;
 
 /**
  * Created by qiao1 on 2017/3/11.
  */
 
-public class SignInFragment extends Fragment implements BaseView<ViewDataBinding> {
+public class SignInFragment extends Fragment {
 
     private SignInViewModel viewModel;
     private FragmentSignInBinding mBinding;
@@ -36,7 +35,17 @@ public class SignInFragment extends Fragment implements BaseView<ViewDataBinding
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_sign_in, container, false);
         mBinding = DataBindingUtil.bind(root);
-        viewModel = new SignInViewModel(mBinding, getContext());
+        viewModel = new SignInViewModel(new UserBean("Juhezi", "123456"), getContext());
+        mBinding.setViewModel(viewModel);
         return root;
     }
+
+    @Override
+    public void onDestroy() {
+        if (viewModel != null) {
+            viewModel.destroy();
+        }
+        super.onDestroy();
+    }
+
 }
